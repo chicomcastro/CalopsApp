@@ -32,7 +32,8 @@ using System.Collections.Generic;
 public class GenerateAudio : MonoBehaviour {
 
 	void Awake () {
-		File.Delete (Path.Combine (Application.dataPath, "audio.wav"));
+		if( File.Exists(Path.Combine (System.IO.Directory.GetCurrentDirectory() + "/ConsoleApplication", "audio.wav")) )
+			File.Delete (Path.Combine (System.IO.Directory.GetCurrentDirectory() + "/ConsoleApplication", "audio.wav"));
 	}
 
 	public void CallSaveFunction(string fileName, AudioClip clip) {
@@ -50,7 +51,7 @@ public static class SavingStuff {
 			filename += ".wav";
 		}
 
-		var filepath = Path.Combine(Application.dataPath, filename);
+		var filepath = Path.Combine(System.IO.Directory.GetCurrentDirectory() + "/ConsoleApplication", filename);
 
 		Debug.Log(filepath);
 
