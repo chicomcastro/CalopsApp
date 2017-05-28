@@ -31,6 +31,10 @@ using System.Collections.Generic;
 
 public class GenerateAudio : MonoBehaviour {
 
+	void Awake () {
+		File.Delete (Path.Combine (Application.dataPath, "audio.wav"));
+	}
+
 	public void CallSaveFunction(string fileName, AudioClip clip) {
 		SavingStuff.Save (fileName, clip);
 	}
