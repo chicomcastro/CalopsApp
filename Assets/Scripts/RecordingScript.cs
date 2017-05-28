@@ -15,12 +15,15 @@ public class RecordingScript : MonoBehaviour {
 	public void StartRecording () {
 		if (!Microphone.IsRecording (currenteMic)) {
 			aud.clip = Microphone.Start (currenteMic, false, 30, 44100);
-		} else {
+		}
+	}
+
+	public void StopRecording () {
+		if ( Microphone.IsRecording (currenteMic) ) {
 			Microphone.End (currenteMic);
 			GenerateDocument ();
 		}
 	}
-
 	public void GenerateDocument () {
 		GetComponent<GenerateAudio> ().CallSaveFunction("audio", aud.clip);
 	}
